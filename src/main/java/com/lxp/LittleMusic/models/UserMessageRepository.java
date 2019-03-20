@@ -8,8 +8,13 @@ import java.util.List;
 
 public interface UserMessageRepository extends JpaRepository<UserMessage, Integer> {
 
-    @Query("from User u where u.userName=:userName")
+    @Query("from UserMessage u where u.userName=:userName")
     List<UserMessage> findBy(@Param("userName") String userName);
+
+    @Query("from UserMessage u where u.userName=:userName and u.password=:password ")
+    List<UserMessage> findBy(@Param("userName") String userName,@Param("password") String password);
+
+
 
 }
 

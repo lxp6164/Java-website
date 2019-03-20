@@ -24,6 +24,10 @@ public class UserMessageController {
         return userMessageRepository.findBy(userName);
     }
 
+    //查询user是否存在，合法
+    public List<UserMessage> findLoginUser(String userName,String password) {
+        return userMessageRepository.findBy(userName,password);
+    }
 
     //添加User
     public UserMessage addUser(@RequestParam("userName") String userName, @RequestParam("password") String password, @RequestParam("musicCount")int musicCount) {
@@ -33,8 +37,6 @@ public class UserMessageController {
         u.setMusicCount(musicCount);
 
         return userMessageRepository.save(u);
-
-
     }
 }
 
